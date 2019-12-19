@@ -9,7 +9,7 @@ public class ChessPosition {
 	
 	public ChessPosition(char column, int row) {
 		//defensive programming
-		if (column < 'a' || column > 'h' || row <1 || row >8) {
+		if (column < 'a' || column > 'h' || row < 1 || row >8) {
 			throw new ChessException("Error instantiating ChessPosition. Valid values are from a1 to h8.");
 		}
 		this.column = column;
@@ -29,7 +29,7 @@ public class ChessPosition {
 	
 	//converts the other way around (chess board position to matrix position)
 	protected static ChessPosition fromPosition(Position position) {
-		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow());
+		return new ChessPosition((char)('a' + position.getColumn()), 8 - position.getRow());
 	}
 	
 	//the "" forces the compiler to concatenate as a string
