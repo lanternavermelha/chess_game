@@ -25,6 +25,12 @@ public class Position {
 	public void setColumn(int column) {
 		this.column = column;
 	}
+	
+	//method to refresh position values
+	public void setValue(int row, int column) {
+		this.row = row;
+		this.column = column;
+	}
 
 	@Override
 	public String toString() {
