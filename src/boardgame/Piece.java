@@ -18,4 +18,26 @@ public abstract class Piece {
 	protected Board getBoard() {
 		return board;
 	}
+	
+	public abstract boolean[][] possibleMoves();
+	
+	//hook-method - the abstract class hooks the concrete sub-class
+	//See template method design pattern (https://refactoring.guru/design-patterns/template-method)
+	public boolean possibleMove(Position position) {
+		return possibleMoves()[position.getRow()][position.getColumn()];
+	}
+	
+	//hook-method - the abstract class hooks the concrete sub-class
+	//See template method design pattern (https://refactoring.guru/design-patterns/template-method)
+	public boolean isThereAnyPossibleMove() {
+		boolean[][] mat = possibleMoves();
+		for (int i=0;i<mat.length;i++) {
+			for (int j=0;j<mat.length; j++) {
+				if (mat[i][j]) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }
