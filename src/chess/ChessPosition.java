@@ -6,6 +6,7 @@ public class ChessPosition {
 	
 	private char column;
 	private int row;
+	
 	public ChessPosition(char column, int row) {
 		//defensive programming
 		if (column < 'a' || column > 'h' || row <1 || row >8) {
