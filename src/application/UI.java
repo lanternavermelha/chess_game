@@ -107,12 +107,14 @@ public class UI {
 				System.out.print(ANSI_RED + chessMatch.getCurrentPlayer()  + ANSI_RESET);
 			}
 			if (chessMatch.getCheck()) {
-				System.out.println("CHECK!");
+				System.out.println();
+				System.out.println("\nCHECK!");
 			}
 		}
 		else {
+			System.out.println();
 			System.out.println("CHECKMATE!");
-			System.out.println("Winner: " + chessMatch.getCurrentPlayer());
+			System.out.println("\nWinner: " + chessMatch.getCurrentPlayer());
 		}
 	}
 
