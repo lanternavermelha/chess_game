@@ -36,10 +36,10 @@ public class UI {
 
 	// https://stackoverflow.com/questions/2979383/java-clear-the-console
 	public static void clearScreen() {
-	 System. out.print("\033[H\033[2J");
-	 System. out.flush();
+		System. out.print("\033[H\033[2J");
+		System. out.flush();
 	}
-	
+
 	public static ChessPosition readChessPosition(Scanner sc) {
 
 		try {
@@ -64,7 +64,7 @@ public class UI {
 		}
 		System.out.println("  a b c d e f g h");
 	}
-	
+
 	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
 		System.out.println("  a b c d e f g h");
 		for (int i = 0; i < pieces.length; i++) {
@@ -93,17 +93,23 @@ public class UI {
 		}
 		System.out.print(" ");
 	}
-	
+
 	public static void printMatch(ChessMatch chessMatch, List<ChessPiece> captured) {
 		printBoard(chessMatch.getPieces());
 		printCapturedPieces(captured);
 		System.out.println("\nTurn : " + chessMatch.getTurn());
-		System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
-		if (chessMatch.getCheck()) {
-			System.out.println("CHECK!");
+		if (!chessMatch.getCheckMate()) {
+			System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
+			if (chessMatch.getCheck()) {
+				System.out.println("CHECK!");
+			}
+		}
+		else {
+			System.out.println("CHECKMATE!");
+			System.out.println("Winner: " + chessMatch.getCurrentPlayer());
 		}
 	}
-	
+
 	private static void printCapturedPieces(List<ChessPiece> captured) {
 		List<ChessPiece> white = captured.stream().filter(x -> x.getColor() == Color.WHITE).collect((Collectors.toList()));
 		List<ChessPiece> red = captured.stream().filter(x -> x.getColor() == Color.RED).collect((Collectors.toList()));
