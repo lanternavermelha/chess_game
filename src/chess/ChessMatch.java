@@ -233,7 +233,7 @@ public class ChessMatch {
 				else {
 					pawnPosition = new Position(4, target.getColumn());
 				}
-				capturedPiece = board.removePiece(pawnPosition);
+				board.placePiece(pawn, pawnPosition);
 			}
 		}
 	}
