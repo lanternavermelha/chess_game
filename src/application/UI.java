@@ -86,7 +86,7 @@ public class UI {
 			System.out.print("-" + ANSI_RESET);
 		} else {
 			if (piece.getColor() == Color.WHITE) {
-				System.out.print(ANSI_BLACK + piece + ANSI_RESET);
+				System.out.print(ANSI_WHITE + piece + ANSI_RESET);
 			} else {
 				System.out.print(ANSI_RED + piece + ANSI_RESET);
 			}
@@ -99,7 +99,13 @@ public class UI {
 		printCapturedPieces(captured);
 		System.out.println("\nTurn : " + chessMatch.getTurn());
 		if (!chessMatch.getCheckMate()) {
-			System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
+			System.out.print("Waiting player: ");
+			if (chessMatch.getCurrentPlayer() == Color.WHITE) {
+				System.out.print(ANSI_WHITE + chessMatch.getCurrentPlayer() + ANSI_RESET);
+			}
+			if (chessMatch.getCurrentPlayer() == Color.RED) {
+				System.out.print(ANSI_RED + chessMatch.getCurrentPlayer()  + ANSI_RESET);
+			}
 			if (chessMatch.getCheck()) {
 				System.out.println("CHECK!");
 			}
